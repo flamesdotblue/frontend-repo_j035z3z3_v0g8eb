@@ -1,67 +1,60 @@
 import React from 'react';
-import { BookOpen, FileText, Wand2, Scissors, CheckCircle2 } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 
 const steps = [
   {
-    icon: BookOpen,
-    title: 'Ingest your catalog',
-    desc: 'Drop in manuscripts, PDFs, EPUBs, or audio. Map metadata and chapters in minutes.',
+    title: 'Drop long‑form content',
+    description:
+      'Connect your podcast/video feed or upload files. We index transcripts and chapters instantly.',
   },
   {
-    icon: FileText,
-    title: 'Auto-select highlights',
-    desc: 'AI identifies clip‑worthy insights, frameworks, quotes, and chapter hooks for UGC.',
+    title: 'AI selects hooks',
+    description:
+      'Models find viral moments, trim dead air, and craft captions with emojis and keywords.',
   },
   {
-    icon: Wand2,
-    title: 'Generate scripts & assets',
-    desc: 'Auto‑scripts, voice lines, on‑screen captions, b‑roll prompts, and thumbnail copy.',
+    title: 'Brand it automatically',
+    description:
+      'Templates apply fonts, colors, subtitles, and layouts tailored for each platform.',
   },
   {
-    icon: Scissors,
-    title: 'Assemble & format',
-    desc: 'n8n pipeline stitches scenes, styles captions, and exports platform‑native versions.',
-  },
-  {
-    icon: CheckCircle2,
-    title: 'Review & publish',
-    desc: 'One‑click approval flows. Export to TikTok, IG Reels, and YouTube Shorts.',
+    title: 'Distribute everywhere',
+    description:
+      'Schedule posts across Shorts, TikTok, and Reels—then track performance in one view.',
   },
 ];
 
 const HowItWorks = () => {
   return (
-    <section id="how-it-works" className="relative overflow-hidden py-24">
-      {/* background glow */}
-      <div className="pointer-events-none absolute left-1/2 top-0 h-80 w-[120vw] -translate-x-1/2 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.05),transparent_60%)]" />
+    <section id="how" className="relative py-24 sm:py-28">
+      {/* Ambient glow */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 opacity-60" style={{
+          backgroundImage:
+            'radial-gradient(550px_200px_at_50%_0%, rgba(99,102,241,0.20), transparent 60%)',
+        }} />
+      </div>
 
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mx-auto max-w-2xl text-center">
+      <div className="relative z-10 mx-auto max-w-4xl px-6">
+        <div className="mb-10 text-center">
           <h2 className="text-3xl font-semibold text-white sm:text-4xl">How it works</h2>
-          <p className="mt-3 text-white/70">A streamlined, auditable pipeline you can trust.</p>
+          <p className="mt-3 text-white/70">From source to social in minutes, not weeks.</p>
         </div>
 
-        <div className="relative mt-14">
-          {/* timeline line */}
-          <div className="pointer-events-none absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-gradient-to-b from-white/20 via-white/10 to-transparent sm:block" />
-
-          <ol className="grid gap-6 sm:grid-cols-2">
-            {steps.map(({ icon: Icon, title, desc }, idx) => (
-              <li key={title} className="group relative">
-                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.035] p-6 backdrop-blur-xl transition duration-300 hover:bg-white/[0.06]">
-                  <div className="mb-4 flex items-center gap-3">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-white ring-1 ring-white/10">
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <span className="rounded-full bg-white/10 px-2 py-0.5 text-xs text-white/80">{String(idx + 1).padStart(2, '0')}</span>
-                  </div>
-                  <h3 className="text-base font-semibold text-white">{title}</h3>
-                  <p className="mt-2 text-sm text-white/70">{desc}</p>
+        <ol className="relative space-y-8 before:absolute before:left-4 before:top-1 before:h-full before:w-px before:bg-gradient-to-b before:from-fuchsia-400/40 before:via-emerald-400/40 before:to-cyan-400/40 sm:before:left-1/2">
+          {steps.map((s, idx) => (
+            <li key={s.title} className="relative grid gap-4 rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur sm:grid-cols-12">
+              <div className="sm:col-span-5">
+                <div className="flex items-center gap-3 text-white">
+                  <CheckCircle2 className="h-5 w-5 text-emerald-400" />
+                  <span className="font-semibold">{String(idx + 1).padStart(2, '0')}</span>
                 </div>
-              </li>
-            ))}
-          </ol>
-        </div>
+                <h3 className="mt-2 text-lg font-semibold text-white">{s.title}</h3>
+              </div>
+              <p className="sm:col-span-7 text-white/70">{s.description}</p>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   );

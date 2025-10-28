@@ -6,27 +6,40 @@ import PricingCTA from './components/PricingCTA';
 
 const App = () => {
   return (
-    <div className="relative min-h-screen w-full bg-[#0a0b10] text-white">
-      {/* Global ambience: vignette + noise */}
-      <div className="pointer-events-none fixed inset-0 -z-10">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(99,102,241,0.08),transparent_50%)]" />
-        <div className="absolute inset-0 opacity-[0.035] mix-blend-soft-light" style={{ backgroundImage: 'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'200\'><filter id=\'n\'><feTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'4\' stitchTiles=\'stitch\'/></filter><rect width=\'100%\' height=\'100%\' filter=\'url(%23n)\'/></svg>")' }} />
+    <div className="min-h-screen bg-[#0b0b12] text-white">
+      {/* Global ambience: vignette + subtle noise */}
+      <div className="pointer-events-none fixed inset-0 -z-[1]">
+        <div
+          className="absolute inset-0 opacity-[0.15]"
+          style={{
+            backgroundImage:
+              'radial-gradient(1200px_600px_at_50%_-10%, rgba(99,102,241,0.35), transparent 60%)',
+          }}
+        />
+        <div
+          className="absolute inset-0 opacity-[0.08] mix-blend-soft-light"
+          style={{
+            backgroundImage:
+              'url("data:image/svg+xml,%3Csvg width=\'300\' height=\'300\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence baseFrequency=\'0.8\' numOctaves=\'4\' seed=\'2\'/%3E%3CfeColorMatrix type=\'saturate\' values=\'0\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\' opacity=\'0.25\'/%3E%3C/svg%3E")',
+          }}
+        />
       </div>
 
-      {/* Navbar */}
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/30 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
-          <a href="#" className="flex items-center gap-2 text-sm font-semibold">
-            <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-white text-gray-900 shadow-sm">A</span>
-            <span className="tracking-tight">AutoShorts for Publishers</span>
-          </a>
-          <nav className="hidden items-center gap-7 text-sm text-white/80 sm:flex">
-            <a href="#features" className="transition hover:text-white">Features</a>
-            <a href="#how-it-works" className="transition hover:text-white">How it works</a>
-            <a href="#pricing" className="transition hover:text-white">Pricing</a>
-            <a href="#pricing" className="rounded-lg bg-white px-3.5 py-2 font-semibold text-gray-900 shadow-sm transition hover:translate-y-[-1px] hover:shadow-md">Book a Demo</a>
-          </nav>
-        </div>
+      {/* Simple navbar */}
+      <header className="fixed inset-x-0 top-0 z-50">
+        <nav className="mx-auto mt-4 w-[94%] max-w-7xl rounded-2xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur">
+          <div className="flex items-center justify-between">
+            <a href="#" className="text-sm font-semibold tracking-tight">Nebula Shorts</a>
+            <div className="hidden gap-6 text-sm text-white/80 sm:flex">
+              <a href="#features" className="hover:text-white">Features</a>
+              <a href="#how" className="hover:text-white">How it works</a>
+              <a href="#pricing" className="hover:text-white">Pricing</a>
+            </div>
+            <a href="#pricing" className="rounded-xl border border-white/15 bg-white/10 px-3 py-1.5 text-sm font-semibold text-white/90 hover:bg-white/15">
+              Get started
+            </a>
+          </div>
+        </nav>
       </header>
 
       <main>
@@ -36,17 +49,9 @@ const App = () => {
         <PricingCTA />
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-white/10 bg-black/30 py-14 backdrop-blur-md">
-        <div className="mx-auto max-w-7xl px-6 text-sm text-white/70">
-          <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-            <p>© {new Date().getFullYear()} AutoShorts. Built with n8n + AI.</p>
-            <div className="flex items-center gap-4">
-              <a className="hover:text-white" href="#">Privacy</a>
-              <a className="hover:text-white" href="#">Terms</a>
-              <a className="hover:text-white" href="mailto:hello@yourdomain.com">Contact</a>
-            </div>
-          </div>
+      <footer className="mt-10 border-t border-white/10/15/0 bg-white/5/0">
+        <div className="mx-auto max-w-7xl px-6 py-10 text-center text-xs text-white/60">
+          © {new Date().getFullYear()} Nebula Labs. Built with n8n + AI.
         </div>
       </footer>
     </div>
